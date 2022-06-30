@@ -3,6 +3,7 @@ import {render, cleanup} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Nav from '..';
 
+
 afterEach(cleanup);
 
 describe('Nav componets', ()=>{
@@ -19,7 +20,7 @@ describe('Nav componets', ()=>{
     })
 });
 
-describe("empji is visible",()=>{
+describe("emoji is visible",()=>{
     it('inserts emoji into the h2',()=>{
         // Arrange
         const {getByLabelText}=render(<Nav/>);
@@ -27,4 +28,13 @@ describe("empji is visible",()=>{
         expect(getByLabelText('camera')).toHaveTextContent('📸');
     });
     
+});
+
+describe('links are visible',()=>{
+    it('inserts text into the links',()=>{
+     const {getByTestId}=render(<Nav/>);
+     expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
+     expect(getByTestId('about')).toHaveTextContent('About me');
+
+    });
 })
